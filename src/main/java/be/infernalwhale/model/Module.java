@@ -1,0 +1,57 @@
+package be.infernalwhale.model;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class Module {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String name;
+    @Column(length = 2000)
+    private String description;
+
+    @ManyToOne
+    private Course course;
+
+    @OneToMany(mappedBy = "module")
+    private List<Exam> exams;
+
+    public Long getId() {
+        return id;
+    }
+
+    public Module setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Module setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Module setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public Module setCourse(Course course) {
+        this.course = course;
+        return this;
+    }
+}
